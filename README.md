@@ -1,103 +1,60 @@
-# GitHub Actions API Proxy
+# GitHub Actions Proxy - Template
 
-## Overview
-This project is a **Swift Vapor-based proxy service** for interacting with the **GitHub Actions API**. It leverages **OpenAPI specifications**, **Swift OpenAPI Generator**, and **OctoKit** for seamless integration with GitHub workflows, logs, and artifacts.
+This repository branch provides a **template** for building proxy servers using **Swift OpenAPI Generator** and **Vapor**.
 
-### Key Features
-- **Proxy for GitHub Actions API Endpoints** - Provides an intermediary service for GitHub Actions workflows, runs, and logs.
-- **OpenAPI Specification Compliance** - Ensures consistency and schema validation through OpenAPI-generated code.
-- **Vapor Framework** - Robust, scalable backend server implementation.
-- **OctoKit Integration** - Direct interaction with GitHub's REST API for extended functionality.
-- **Database Support** - Uses SQLite via Fluent ORM for metadata storage.
-- **Search Optimization** - Built-in Typesense client for fast and typo-tolerant search capabilities.
+---
 
-## Project Structure
-```
-ActionsAPIProxy/
-├── Package.swift
-├── Sources/
-│   ├── ActionsAPIProxy/
-│   │   ├── main.swift
-│   │   ├── configure.swift
-│   │   ├── Routes/
-│   │   ├── Handlers/
-│   │   ├── Services/
-│   │   ├── Models/
-│   │   ├── Migrations/
-│   │   ├── openapi.yaml
-│   │   └── openapi-generator-config.yaml
-├── Generated/
-├── Tests/
-└── README.md
-```
+## Features
 
-## Setup Instructions
-### Prerequisites
-- **Swift 5.9+**
-- **macOS 10.15+**
-- **Xcode 15+**
+- **Swift Package Manager** project structure.
+- **OpenAPI-driven** API generation and routing.
+- **Vapor-based middleware** setup for logging and error handling.
+- Pre-configured files for custom handler implementation.
 
-### Installation
-1. Clone the repository:
-   ```bash
-   git clone https://github.com/Contexter/gh-actions-proxy.git
-   cd gh-actions-proxy
-   ```
-2. Resolve dependencies:
-   ```bash
-   swift package update
-   ```
-3. Build the project:
-   ```bash
-   swift build
-   ```
+---
 
-### Running the Proxy
-Start the Vapor server locally:
+## Usage Instructions
+
+### 1. Replace OpenAPI Specification
+
+Replace the existing `openAPI.yaml` file with your new API specification.
+
+### 2. Regenerate Code
+
+Use **Swift OpenAPI Generator** to regenerate code based on the new spec:
+
 ```bash
-swift run ActionsAPIProxy
+swift package generate-api --input openAPI.yaml --output Sources/Generated
 ```
 
-Access the API at `http://localhost:8080`.
+### 3. Copy Generated Code
 
-## Configuration
-### Environment Variables
-- **GITHUB_TOKEN**: Required for authentication with GitHub APIs.
+Manually copy the generated files into the `Sources/Generated` folder.
+This ensures changes are preserved when regenerating code.
 
-## API Documentation
-API endpoints and schemas are defined in the **OpenAPI specification** located at:
-```
-Sources/ActionsAPIProxy/openapi.yaml
-```
+### 4. Implement API Handlers
 
-## Testing
-### Unit Tests
-```bash
-swift test
-```
-### Manual API Testing
-Use tools like **Postman** or **cURL** to interact with the proxy endpoints.
+Edit `CustomAPIImplementation.swift` to implement handlers conforming to `APIProtocol`.
 
-## Contributing
-1. Fork this repository.
-2. Create a feature branch:
-   ```bash
-   git checkout -b feature/your-feature-name
-   ```
-3. Commit your changes:
-   ```bash
-   git commit -m "Add your message here"
-   ```
-4. Push to your branch and create a PR:
-   ```bash
-   git push origin feature/your-feature-name
-   ```
+---
+
+## Development Notes
+
+- **`CustomAPIImplementation.swift`** is a placeholder and must be updated to match the OpenAPI contract.
+- Middleware and routing setup are already provided in `configure.swift`.
+- This template allows switching the API spec without changing the core application structure.
+
+---
+
+## Template Update Process
+
+1. Replace `openAPI.yaml` with a new specification.
+2. Regenerate code and copy files into `Generated`.
+3. Update `CustomAPIImplementation.swift` to implement required methods.
+
+---
 
 ## License
-This project is licensed under the **MIT License**.
 
-## Contact
-For issues or feature requests, open an issue on the repository.
-
-**Repository:** [https://github.com/Contexter/gh-actions-proxy](https://github.com/Contexter/gh-actions-proxy)
+[MIT License](LICENSE)
 
