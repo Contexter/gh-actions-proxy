@@ -2,59 +2,42 @@
 
 This repository branch provides a **template** for building proxy servers using **Swift OpenAPI Generator** and **Vapor**.
 
----
-
 ## Features
 
 - **Swift Package Manager** project structure.
 - **OpenAPI-driven** API generation and routing.
-- **Vapor-based middleware** setup for logging and error handling.
-- Pre-configured files for custom handler implementation.
-
----
+- Supports **Vapor middleware** and custom implementations.
+- Serves as a **template** branch to create new projects based on OpenAPI specifications.
 
 ## Usage Instructions
 
-### 1. Replace OpenAPI Specification
+### **DO NOT MERGE INTO MAIN**
+This branch (`GH-Proxy-Template`) is meant to remain as a **template** branch and should **not** be merged into the `main` branch. Instead, it should be used as a starting point for new projects.
 
-Replace the existing `openAPI.yaml` file with your new API specification.
-
-### 2. Regenerate Code
-
-Use **Swift OpenAPI Generator** to regenerate code based on the new spec:
-
+### **Create a New Branch from the Template**
+To start a new project:
 ```bash
-swift package generate-api --input openAPI.yaml --output Sources/Generated
+git checkout -b NewFeatureBranch GH-Proxy-Template
 ```
+This will create a new branch (`NewFeatureBranch`) based on the template.
 
-### 3. Copy Generated Code
+### **Implement Custom API Logic**
+- Replace the placeholder methods in `CustomAPIImplementation.swift` with logic conforming to your OpenAPI specification.
+- Ensure all required methods in the `APIProtocol` are implemented.
+- Use comments and documentation in the code as guidance.
 
-Manually copy the generated files into the `Sources/Generated` folder.
-This ensures changes are preserved when regenerating code.
+### **Manual Steps**
+- Update the `openapi.yaml` file for your API design.
+- Run the OpenAPI Generator to regenerate types and routes.
+- Copy the generated files into the `Generated` directory.
 
-### 4. Implement API Handlers
+## Notes
+- This template separates protocol definitions (generated code) from custom logic (your code).
+- Use this approach for scalable, OpenAPI-driven server implementations.
 
-Edit `CustomAPIImplementation.swift` to implement handlers conforming to `APIProtocol`.
-
----
-
-## Development Notes
-
-- **`CustomAPIImplementation.swift`** is a placeholder and must be updated to match the OpenAPI contract.
-- Middleware and routing setup are already provided in `configure.swift`.
-- This template allows switching the API spec without changing the core application structure.
-
----
-
-## Template Update Process
-
-1. Replace `openAPI.yaml` with a new specification.
-2. Regenerate code and copy files into `Generated`.
-3. Update `CustomAPIImplementation.swift` to implement required methods.
+## Contributing
+Feel free to submit issues and suggestions, but remember that this branch is designed to remain as a **template** and should not be modified directly for project-specific features.
 
 ---
-
-## License
-
-[MIT License](LICENSE)
+**Happy Coding!**
 
