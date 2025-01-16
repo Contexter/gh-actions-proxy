@@ -1,3 +1,1 @@
-# Main branch reset
-
-This branch has been reset to a blank slate. A backup of the original content is stored in the `backup` branch.
+start from scratch here https://swiftpackageindex.com/apple/swift-openapi-generator/1.7.0/tutorials/swift-openapi-generator/serverswiftpm
