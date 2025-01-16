@@ -1,12 +1,8 @@
-Packages
-.build
-xcuserdata
-*.xcodeproj
-DerivedData/
 .DS_Store
-db.sqlite
-.swiftpm
-.env
-.env.*
-! .env.example
-.vscode
+/.build
+/Packages
+xcuserdata/
+DerivedData/
+.swiftpm/configuration/registries.json
+.swiftpm/xcode/package.xcworkspace/contents.xcworkspacedata
+.netrc
