@@ -12,7 +12,9 @@ let package = Package(
         // 🔵 Non-blocking, event-driven networking for Swift. Used for custom executors
         .package(url: "https://github.com/apple/swift-nio.git", from: "2.65.0"),
         // ✅ Added Monorepo for custom APIs
-        .package(url: "https://github.com/Contexter/GithubProxyMonorepo.git", from: "1.0.0")
+        .package(url: "https://github.com/Contexter/GithubProxyMonorepo.git", from: "1.0.0"),
+        // 🐙 Octokit.swift for GitHub API interactions
+        .package(url: "https://github.com/nerdishbynature/octokit.swift.git", from: "0.10.0")
     ],
     targets: [
         .executableTarget(
@@ -22,7 +24,8 @@ let package = Package(
                 .product(name: "NIOCore", package: "swift-nio"),
                 .product(name: "NIOPosix", package: "swift-nio"),
                 // ✅ Added "Actions" from Monorepo
-                .product(name: "Actions", package: "GithubProxyMonorepo")
+                .product(name: "Actions", package: "GithubProxyMonorepo"),
+                .product(name: "OctoKit", package: "octokit.swift")
             ],
             swiftSettings: swiftSettings
         ),
