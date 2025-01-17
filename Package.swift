@@ -24,6 +24,9 @@ let package = Package(
         
         // Algorithms
         .package(url: "https://github.com/apple/swift-algorithms.git", from: "1.0.0"),
+
+        // HTTP Types
+        .package(url: "https://github.com/apple/swift-http-types.git", from: "1.0.0")
     ],
     targets: [
         .executableTarget(
@@ -35,7 +38,7 @@ let package = Package(
                 .product(name: "Fluent", package: "fluent"),
                 .product(name: "FluentSQLiteDriver", package: "fluent-sqlite-driver"),
                 .product(name: "Typesense", package: "typesense-swift"),
-                .product(name: "Algorithms", package: "swift-algorithms"),
+                .product(name: "Algorithms", package: "swift-algorithms")
             ],
             path: "Sources",
             exclude: [
@@ -49,7 +52,8 @@ let package = Package(
             name: "GHActionsProxyTests",
             dependencies: [
                 "GHActionsProxy",
-                .product(name: "XCTVapor", package: "vapor") // Include XCTVapor for testing
+                .product(name: "XCTVapor", package: "vapor"),
+                .product(name: "HTTPTypes", package: "swift-http-types") // Correct version range
             ],
             path: "Tests/GHActionsProxyTests",
             exclude: [
